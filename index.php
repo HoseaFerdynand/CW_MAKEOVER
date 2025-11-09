@@ -8,7 +8,8 @@
 </head>
 
 <body class="bg-[#F2F2FF]">
-    <!-- <iframe src="navbar.html" style="width: 100%;"></iframe> -->
+    <?php include 'navbar.php'; ?>
+    <!-- <iframe src="navbar.php" style="width: 100%;"></iframe> -->
 
     <!-- <div class="flex">
         <div class="max-w-sm rounded overflow-hidden shadow-lg m-12">
@@ -96,7 +97,6 @@
             </div>
         </div>
 
-        <!-- out outlets section -->
         <div class="mt-24">
             <h2 class="text-[#0A225E] text-5xl font-bold uppercase">Our Outlets</h2>
 
@@ -218,6 +218,7 @@
             <button class="mt-12 bg-[#0A225E] text-lg text-white px-12 py-3 rounded-full">Contact</button>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>

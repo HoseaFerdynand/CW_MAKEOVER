@@ -89,108 +89,105 @@
             </div>
     </div>
 
-    <script>
-        let menuData = [];
+</body>
+</html>
 
-        const menuGrid = document.getElementById('menuGrid');
-        const menuTitle = document.getElementById('menuTitle');
-        const allMenuIcon = document.getElementById('allMenuIcon'); 
+<script>
+    let menuData = [];
 
-        //membuat menuData dri file json
-        async function loadMenuData() {
-            try {
-                const response = await fetch('menuData.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                menuData = await response.json();
-                renderMenu(menuData);
-            } catch (error) {
-                console.error('Failed to load menu data:', error);
-                menuGrid.innerHTML = '<p class="text-red-500 col-span-full">Gagal memuat data menu...</p>';
+    const menuGrid = document.getElementById('menuGrid');
+    const menuTitle = document.getElementById('menuTitle');
+    const allMenuIcon = document.getElementById('allMenuIcon'); 
+
+    //membuat menuData dri file json
+    async function loadMenuData() {
+        try {
+            const response = await fetch('menuData.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+            menuData = await response.json();
+            renderMenu(menuData);
+        } catch (error) {
+            console.error('Failed to load menu data:', error);
+            menuGrid.innerHTML = '<p class="text-red-500 col-span-full">Gagal memuat data menu...</p>';
         }
+    }
 
-        //elemen menu
-        function createMenuItem(item) {
+    //elemen menu
+    function createMenuItem(item) {
 
-            const div = document.createElement('div');
-            div.className = 'menu-item text-center group';
-            div.setAttribute('data-name', item.namaProduk);
-            const categoryAttr = item.kategori.toLowerCase().replace(/\s/g, '-');
-            div.setAttribute('data-category', categoryAttr);
+        const div = document.createElement('div');
+        div.className = 'menu-item text-center group';
+        div.setAttribute('data-name', item.namaProduk);
+        const categoryAttr = item.kategori.toLowerCase().replace(/\s/g, '-');
+        div.setAttribute('data-category', categoryAttr);
 
-            div.innerHTML = `
-                <div class="menu-image-container w-full h-auto p-4 aspect-square transform group-hover:scale-[1.02] transition duration-300">
-                    <img src="${item.image}" alt="${item.alt}" class="w-full h-full object-cover rounded-md">
-                </div>
-                <p class="mt-3 text-sm sm:text-base font-semibold text-indigo-900 uppercase group-hover:text-yellow-600 group-focus:text-yellow-600 transition duration-150">${item.namaProduk}</p>
-            `;
-            return div;
-        }
+        div.innerHTML = `
+            <div class="menu-image-container w-full h-auto p-4 aspect-square transform group-hover:scale-[1.02] transition duration-300">
+                <img src="${item.image}" alt="${item.alt}" class="w-full h-full object-cover rounded-md">
+            </div>
+            <p class="mt-3 text-sm sm:text-base font-semibold text-indigo-900 uppercase group-hover:text-yellow-600 group-focus:text-yellow-600 transition duration-150">${item.namaProduk}</p>
+        `;
+        return div;
+    }
 
-        //render menu
-        function renderMenu(data) {
-            menuGrid.innerHTML = '';
-            data.forEach(item => {
-                menuGrid.appendChild(createMenuItem(item));
-            });
-        }
+    //render menu
+    function renderMenu(data) {
+        menuGrid.innerHTML = '';
+        data.forEach(item => {
+            menuGrid.appendChild(createMenuItem(item));
+        });
+    }
 
-        //filter kategori
-        function filterByCategory(category) {
+    let activeCategory = 'all';
 
-            event.preventDefault(); 
-            
-            let titleText;
-            if (category === 'all') {
-                titleText = 'All Menu';
-                allMenuIcon.classList.add('hidden');
-            } else {
-                titleText = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
-                allMenuIcon.classList.remove('hidden');
-            }
-            menuTitle.textContent = titleText;
+    // filter kategori
+    function filterByCategory(category) {
+        event.preventDefault();
 
-            const categoryKey = category.toLowerCase().replace(/\s/g, '-');
-            const menuItems = document.querySelectorAll('.menu-item');
+        activeCategory = category.toLowerCase().replace(/\s/g, '-');
 
-            menuItems.forEach(item => {
-                const itemCategory = item.getAttribute('data-category');
-                
-                if (category === 'all' || itemCategory === categoryKey) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-            
-            document.getElementById('menuSearch').value = ''; 
-        }
-
-        //filter pencarian
-        function filterMenu() {
-            const input = document.getElementById('menuSearch');
-            const filter = input.value.toLowerCase();
-            const menuItems = document.querySelectorAll('.menu-item');
-            
-            menuTitle.textContent = 'All Menu';
+        let titleText;
+        if (activeCategory === 'all') {
+            titleText = 'All Menu';
             allMenuIcon.classList.add('hidden');
-            
-            menuItems.forEach(item => {
-                const name = item.getAttribute('data-name').toLowerCase();
-                
-                // Tampilkan kalau cocok dengan pencarian
-                if (name.includes(filter)) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
+        } else {
+            titleText = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
+            allMenuIcon.classList.remove('hidden');
         }
+        menuTitle.textContent = titleText;
+
+        applyFilters();
+    }
+
+
+    function filterMenu() {
+        applyFilters(); 
+    }
+
+    function applyFilters() {
+        const input = document.getElementById('menuSearch');
+        const filter = input.value.toLowerCase();
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            const name = item.getAttribute('data-name').toLowerCase();
+            const itemCategory = item.getAttribute('data-category');
+
+            const matchCategory = activeCategory === 'all' || itemCategory === activeCategory;
+            const matchSearch = name.includes(filter);
+
+            if (matchCategory && matchSearch) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+
+
         document.addEventListener('DOMContentLoaded', () => {
             loadMenuData();
         });
     </script>
-</body>
-</html>
