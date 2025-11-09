@@ -7,14 +7,14 @@
     <link rel="icon" type="image/webp" href="assets/logo-cw.webp">
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-[#F2F2FF] text-gray-800">
 <?php include 'navbar.php'; ?>
-
 <h2 class="text-3xl font-bold text-center text-blue-900 m-6 tracking-wider">
     ABOUT US
 </h2>
 
-<div class="w-3/4 mx-auto px-6 py-12">
+<div class="w-3/4 mx-auto px-6 pb-12">
     <div class="grid md:grid-cols-3 gap-16 items-start">
         <div class="w-full">
             <img src="assets/owner.webp" alt="CW Coffee Halal Certified" class="rounded-xl shadow-lg object-cover w-full h-auto">
