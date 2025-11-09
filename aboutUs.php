@@ -139,10 +139,7 @@
     </div>
     </section>
                     
-<footer class="bg-blue-900 text-center py-10 text-white">
-    <h2 class="text-2xl font-extrabold mb-2">CW Untukmu</h2>
-    <p class="text-yellow-400 font-medium">#SahabatSejatiku</p>
-</footer>
+<?php include 'footer.php'; ?>
 </body>
 </html>
                 

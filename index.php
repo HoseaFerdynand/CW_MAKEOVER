@@ -206,7 +206,6 @@
             </div>
         </div>
 
-        <!-- contact us section -->
         <div class="mt-24 bg-[url('/assets/contact-us-bg.png')] bg-cover bg-center p-32">
             <h3 class="text-[#0A225E] text-5xl font-bold underline w-2/3">Contact with us if You've Any Questions</h3>
 
