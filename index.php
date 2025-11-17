@@ -52,59 +52,7 @@
                 </div>
             </div>
 
-            <div class="mt-24 relative">
-                <h2 class="text-[#0A225E] text-5xl font-bold uppercase">Our Outlets</h2>
-
-                <div id="carousel" class="mt-12 grid grid-cols-4 gap-6">
-                    <div class="bg-white rounded-[10px]">
-                        <img src="assets/outlet-mempawah.png" class="w-full" />
-
-                        <div class="p-4">
-                            <h3 class="text-lg text-[#0A225E] font-semibold hover:underline">Outlet Mempawah</h3>
-                            <p class="mt-1 text-sm hover:underline">Jl. Ahmad Yani, Tengah, Kec. Mempawah Hilir, Kab.
-                                Mempawah</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-[10px]">
-                        <img src="assets/outlet-sungai-duri.png" class="w-full" />
-
-                        <div class="p-4">
-                            <h3 class="text-lg text-[#0A225E] font-semibold hover:underline">Outlet Sungai Duri</h3>
-                            <p class="mt-1 text-sm hover:underline">Jl. Sungai Duri, Bengkayang</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-[10px]">
-                        <img src="assets/outlet-mempawah.png" class="w-full" />
-
-                        <div class="p-4">
-                            <h3 class="text-lg text-[#0A225E] font-semibold hover:underline">Outlet Sepakat 2</h3>
-                            <p class="mt-1 text-sm hover:underline">Jl. Sepakat 2, Kel. Bansir Darat, Kec. Pontianak
-                                Tenggara</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-[10px]">
-                        <img src="assets/outlet-mempawah.png" class="w-full" />
-
-                        <div class="p-4">
-                            <h3 class="text-lg text-[#0A225E] font-semibold hover:underline">Outlet Sungai Pinyuh</h3>
-                            <p class="mt-1 text-sm hover:underline">Sungai Pinyuh</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="prevBtn"
-                    class="absolute top-1/2 -left-20 p-2 bg-[#0A225E] size-12 rounded-full flex justify-center items-center">
-                    <i class="fa-solid fa-arrow-left text-white"></i>
-                </div>
-
-                <div id="nextBtn"
-                    class="absolute top-1/2 -right-20 p-2 bg-[#0A225E] size-12 rounded-full flex justify-center items-center">
-                    <i class="fa-solid fa-arrow-right text-white"></i>
-                </div>
-            </div>
+            <?php include 'carousel.php'?>
 
             <div class="mt-24">
                 <h2 class="text-[#0A225E] text-5xl font-bold uppercase">Premium Coffee Beans</h2>
@@ -186,21 +134,6 @@
     </div>
     <?php include 'footer.php'; ?>
 
-    <script>
-        const carousel = document.getElementById("carousel");
-        const nextBtn = document.getElementById("nextBtn");
-        const prevBtn = document.getElementById("prevBtn");
-
-        const cardWidth = carousel.children[0].offsetWidth + 24;
-
-        nextBtn.addEventListener("click", () => {
-            carousel.scrollLeft += cardWidth;
-        });
-
-        prevBtn.addEventListener("click", () => {
-            carousel.scrollLeft -= cardWidth;
-        });
-    </script>
 </body>
 
 </html>
