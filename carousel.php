@@ -1,3 +1,15 @@
+<style>
+        #carousel {
+            display: flex;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        #carousel>div {
+            min-width: 25%;
+        }
+    </style>
+    
 <div class="mt-24 relative">
     <h2 class="text-[#0A225E] text-5xl font-bold uppercase">Our Outlets</h2>
 

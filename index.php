@@ -11,22 +11,11 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-        #carousel {
-            display: flex;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        #carousel>div {
-            min-width: 25%;
-        }
-    </style>
+    
 </head>
 
 <body class="bg-[#F2F2FF]">
     <?php include 'navbar.php'; ?>
-    <!-- <iframe src="navbar.php" style="width: 100%;"></iframe> -->
 
     <img src="assets/hero-banner.png" class="w-screen" />
     <div class="max-w-6xl mx-auto px-6 py-12">
@@ -47,7 +36,7 @@
                         minuman-minuman
                         terbaik untuk konsumen kami, yang kemudian kami sebut sebagai #SAHABATSEJATIKU.</p>
 
-                    <a href="/aboutUs.php" class="mt-6 block w-max bg-[#0A225E] text-white px-6 py-2 rounded-full">Read
+                    <a href="aboutUs.php" class="mt-6 block w-max bg-[#0A225E] text-white px-6 py-2 rounded-full">Read
                         More</a>
                 </div>
             </div>
